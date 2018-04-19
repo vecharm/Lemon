@@ -9,14 +9,28 @@ import java.io.IOException
 import java.lang.ref.WeakReference
 import java.util.*
 import java.util.concurrent.TimeUnit
-import javax.net.ssl.SSLContext
+import javax.net.ssl.SSLSocketFactory
+import javax.net.ssl.X509TrustManager
 
 
 object Connector {
 
 
+    private var defaultFactorySSLContext: SSLSocketFactory? = null
+    private var defaultTrustManager: X509TrustManager? = null
+
+    @JvmStatic
+    fun setDefaultSSL(defaultFactorySSLContext: SSLSocketFactory?, defaultTrustManager: X509TrustManager?) {
+        this.defaultTrustManager = defaultTrustManager
+        this.defaultFactorySSLContext = defaultFactorySSLContext
+    }
 
     val Client: OkHttpClient = OkHttpClient().newBuilder().apply {
+        defaultFactorySSLContext?.also { ssl ->
+            defaultTrustManager?.also {
+                sslSocketFactory(ssl, it)
+            }
+        }
         hostnameVerifier({ _, _ -> true })
         connectTimeout(10, TimeUnit.SECONDS)
         readTimeout(10, TimeUnit.SECONDS)
@@ -69,10 +83,6 @@ object Connector {
         return builder.build()
     }
 
-
-    fun getSslContext(): SSLContext? {
-        return null
-    }
 
     private var mContextWeak: WeakReference<Context>? = null
 
