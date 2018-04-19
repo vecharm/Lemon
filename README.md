@@ -7,6 +7,7 @@ Pomelo 使用的是Java-websocket，在某些手机会出现内存泄露，所�
 2.重写重连机制的逻辑，Pomelo里面的重连机制，重连一次就挂掉了
 3.去掉多Connection，多namespace 的支持，很多地方用不上。为了从简，就去掉多余的东西了
 4.支持SSL，Okhttp的功能
+5.
 
 使用方式：
 
@@ -29,8 +30,8 @@ Pomelo 使用的是Java-websocket，在某些手机会出现内存泄露，所�
             override fun onDisconnect() {
                 Toaster.showInfo("socket.onDisconnect")
             }
-
-        })
+           //如果不需要内部的重连机制  reconnectTime = -1
+        },reconnectTime = 3000)
 
 
 
