@@ -1,5 +1,5 @@
 # Lemon
-重构Pomelo，将Java-websocket 替换为 okhttp-websocket
+重构Android-Pomelo，将Java-websocket 替换为 okhttp-websocket
 
 Pomelo 使用的是Java-websocket，在某些手机会出现内存泄露，所以本项目使用Okhttp-websocket代替
 
