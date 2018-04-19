@@ -3,7 +3,6 @@ package com.minf.io.lemon.socket
 import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.*
 import java.io.IOException
 import java.lang.ref.WeakReference
@@ -35,12 +34,6 @@ object Connector {
         connectTimeout(10, TimeUnit.SECONDS)
         readTimeout(10, TimeUnit.SECONDS)
         writeTimeout(10, TimeUnit.SECONDS)
-
-    }.also { builder ->
-        getAppContext()?.let {
-            builder.addInterceptor(ChuckInterceptor(it))
-        }
-
     }.build()
 
 

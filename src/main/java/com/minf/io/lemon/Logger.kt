@@ -5,7 +5,7 @@ import android.util.Log
 object Logger {
 
     const val TAG = "com.minf.io.lemon"
-    var enable = true
+    var enable = false
     infix fun i(message: String) {
         if (enable)
             Log.i(TAG, message)
