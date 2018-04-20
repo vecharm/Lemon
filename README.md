@@ -7,7 +7,7 @@
 ##### * 重写重连机制的逻辑，Pomelo里面的重连机制，重连一次就挂掉了<br>
 ##### * 去掉多Connection，多namespace 的支持，很多地方用不上。为了从简，就去掉多余的东西了<br>
 ##### * 支持SSL，Okhttp的功能<br>
-
+![两个版本连接耗时对比测试](https://github.com/VipMinF/Lemon/tree/master/screenshoot/device-2018-04-20-150540.png)
 
 ## 使用方式：
  ```Java
@@ -32,6 +32,5 @@
             }
            //如果不需要内部的重连机制  reconnectTime = -1
         },reconnectTime = 3000)
-
 ```
 
