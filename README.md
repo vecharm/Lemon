@@ -1,7 +1,7 @@
 # Lemon
 ## 重构Android-Pomelo，将Java-websocket 替换为 okhttp-websocket<br>
 
-#### Pomelo 使用的是Java-websocket，在某些手机会出现内存泄露，所以本项目使用Okhttp-websocket代替<br>
+#### Pomelo 使用的是Java-websocket，在某些手机会出现内存泄露和空指针异常，所以本项目使用Okhttp-websocket代替<br>
 
 ##### * 去掉xhr-polling 过时协议的支持<br>
 ##### * 重写重连机制的逻辑，Pomelo里面的重连机制，重连一次就挂掉了<br>
